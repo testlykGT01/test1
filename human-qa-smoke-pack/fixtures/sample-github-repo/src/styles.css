@@ -31,6 +31,24 @@ select {
   border-radius: 8px;
 }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.filter label {
+  margin-top: 20px;
+}
+
+.empty {
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 24px;
+  color: #64748b;
+  text-align: center;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

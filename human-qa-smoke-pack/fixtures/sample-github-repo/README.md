@@ -6,6 +6,9 @@ This disposable repo fixture is for human QA of Code Tab's GitHub/repo workflows
 
 A static feature-request dashboard with sample data in `data/feature-requests.csv`.
 
+Requests can be filtered by priority and by status. The filters combine, and the
+dashboard shows how many requests are currently visible.
+
 ## How to run
 
 Open `src/index.html` in a browser.
