@@ -9,6 +9,10 @@ A static feature-request dashboard with sample data in `data/feature-requests.cs
 Requests can be filtered by priority and by status. The filters combine, and the
 dashboard shows how many requests are currently visible.
 
+Both selections are stored in the URL query string (for example
+`index.html?priority=High&status=Planned`), so reloading the page or sharing the
+link keeps the same filters applied.
+
 ## How to run
 
 Open `src/index.html` in a browser.

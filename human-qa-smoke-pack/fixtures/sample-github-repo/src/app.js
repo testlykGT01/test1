@@ -11,6 +11,48 @@ const statusFilter = document.querySelector("#statusFilter");
 const resultCount = document.querySelector("#resultCount");
 const cards = document.querySelector("#cards");
 
+function isValidOption(select, value) {
+  return Array.from(select.options).some((option) => option.value === value);
+}
+
+function restoreFiltersFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const priority = params.get("priority");
+  const status = params.get("status");
+
+  if (priority && isValidOption(priorityFilter, priority)) {
+    priorityFilter.value = priority;
+  }
+  if (status && isValidOption(statusFilter, status)) {
+    statusFilter.value = status;
+  }
+}
+
+function saveFiltersToUrl() {
+  const params = new URLSearchParams(window.location.search);
+
+  if (priorityFilter.value === "all") {
+    params.delete("priority");
+  } else {
+    params.set("priority", priorityFilter.value);
+  }
+
+  if (statusFilter.value === "all") {
+    params.delete("status");
+  } else {
+    params.set("status", statusFilter.value);
+  }
+
+  const query = params.toString();
+  const url = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+
+  try {
+    window.history.replaceState(null, "", url);
+  } catch (error) {
+    // Some browsers block history updates on file:// URLs; filtering still works.
+  }
+}
+
 function render() {
   const priority = priorityFilter.value;
   const status = statusFilter.value;
@@ -38,6 +80,13 @@ function render() {
   `).join("");
 }
 
-priorityFilter.addEventListener("change", render);
-statusFilter.addEventListener("change", render);
+function onFilterChange() {
+  saveFiltersToUrl();
+  render();
+}
+
+priorityFilter.addEventListener("change", onFilterChange);
+statusFilter.addEventListener("change", onFilterChange);
+
+restoreFiltersFromUrl();
 render();
