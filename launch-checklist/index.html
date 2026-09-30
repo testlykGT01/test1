@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Launch Checklist</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div>
+        <h1>Team Launch Checklist</h1>
+        <p class="subtitle">Track everything from planning through launch day.</p>
+      </div>
+      <button id="resetBtn" type="button" class="reset">Reset checklist</button>
+    </header>
+
+    <section class="overall" aria-labelledby="overallHeading">
+      <h2 id="overallHeading" class="sr-only">Overall progress</h2>
+      <div class="overall-row">
+        <p id="overallLabel" class="overall-label" aria-live="polite">0 of 0 complete</p>
+        <p id="overallPct" class="overall-pct">0%</p>
+      </div>
+      <div class="bar" role="progressbar" aria-labelledby="overallHeading"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="overallBar">
+        <div class="bar-fill" id="overallFill"></div>
+      </div>
+    </section>
+
+    <div id="sections" class="sections"></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
