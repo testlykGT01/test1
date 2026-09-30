@@ -20,15 +20,28 @@ body {
 
 label {
   display: block;
-  margin-top: 20px;
   margin-bottom: 8px;
   font-weight: 600;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 20px;
 }
 
 select {
   padding: 8px 12px;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
+}
+
+.summary {
+  margin: 20px 0 0;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .cards {
@@ -48,4 +61,10 @@ select {
 .meta {
   color: #64748b;
   font-size: 0.9rem;
+}
+
+.empty {
+  color: #64748b;
+  grid-column: 1 / -1;
+  margin: 0;
 }

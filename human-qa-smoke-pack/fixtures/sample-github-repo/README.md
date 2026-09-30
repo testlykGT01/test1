@@ -5,6 +5,8 @@ This disposable repo fixture is for human QA of Code Tab's GitHub/repo workflows
 ## What it is
 
 A static feature-request dashboard with sample data in `data/feature-requests.csv`.
+Cards can be narrowed with the **Priority** and **Status** filters, which combine
+(a card must match both). When nothing matches, an empty-state message is shown.
 
 ## How to run
 
