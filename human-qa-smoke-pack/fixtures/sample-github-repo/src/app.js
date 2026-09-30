@@ -6,19 +6,38 @@ const requests = [
   { id: "FR-105", title: "Add dark mode", priority: "Medium", status: "Planned", owner: "Nina" },
 ];
 
-const priorityFilter = document.querySelector("#priorityFilter");
-const statusFilter = document.querySelector("#statusFilter");
-const cards = document.querySelector("#cards");
-const summary = document.querySelector("#summary");
+// If a stale cached copy of index.html loads against a newer app.js (or vice
+// versa), an element can be missing. Failing loudly here beats a silent
+// TypeError mid-render, which leaves the UI frozen and looks like the filters
+// resetting or doing nothing.
+function required(selector) {
+  const el = document.querySelector(selector);
+  if (!el) throw new Error(`Dashboard: missing ${selector}. Hard-reload the page.`);
+  return el;
+}
+
+const priorityFilter = required("#priorityFilter");
+const statusFilter = required("#statusFilter");
+const cards = required("#cards");
+const summary = required("#summary");
+
+// Both dropdowns are read together on every render, so each filter is applied
+// independently and neither one clears the other.
+function currentFilters() {
+  return { priority: priorityFilter.value, status: statusFilter.value };
+}
+
+function matches(item, { priority, status }) {
+  return (
+    (priority === "all" || item.priority === priority) &&
+    (status === "all" || item.status === status)
+  );
+}
 
 function render() {
-  const priority = priorityFilter.value;
-  const status = statusFilter.value;
-  const visible = requests.filter(
-    (item) =>
-      (priority === "all" || item.priority === priority) &&
-      (status === "all" || item.status === status)
-  );
+  const filters = currentFilters();
+  const { priority, status } = filters;
+  const visible = requests.filter((item) => matches(item, filters));
 
   const active = [
     priority === "all" ? null : `Priority: ${priority}`,
