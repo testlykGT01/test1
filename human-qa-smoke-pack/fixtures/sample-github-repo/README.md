@@ -6,7 +6,9 @@ This disposable repo fixture is for human QA of Code Tab's GitHub/repo workflows
 
 A static feature-request dashboard with sample data in `data/feature-requests.csv`.
 Requests can be filtered by priority and by status, and the dashboard shows how
-many requests match the current selection.
+many requests match the current selection. The two filters are independent:
+changing one keeps the other's selection. Both are saved in `localStorage` under
+`feature-request-dashboard:filters:v1`, so they also survive a page reload.
 
 ## How to run
 

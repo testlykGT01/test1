@@ -6,10 +6,47 @@ const requests = [
   { id: "FR-105", title: "Add dark mode", priority: "Medium", status: "Planned", owner: "Nina" },
 ];
 
+const STORAGE_KEY = "feature-request-dashboard:filters:v1";
+
 const priorityFilter = document.querySelector("#priorityFilter");
 const statusFilter = document.querySelector("#statusFilter");
 const resultCount = document.querySelector("#resultCount");
 const cards = document.querySelector("#cards");
+
+function optionValues(select) {
+  return Array.from(select.options).map((option) => option.value);
+}
+
+function restoreFilters() {
+  let saved;
+  try {
+    saved = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "{}");
+  } catch (error) {
+    return;
+  }
+  if (!saved || typeof saved !== "object") return;
+
+  // Ignore saved values that are no longer offered, so a stale entry can't
+  // leave a select showing a filter the user cannot see or clear.
+  if (optionValues(priorityFilter).includes(saved.priority)) {
+    priorityFilter.value = saved.priority;
+  }
+  if (optionValues(statusFilter).includes(saved.status)) {
+    statusFilter.value = saved.status;
+  }
+}
+
+function saveFilters() {
+  try {
+    window.localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ priority: priorityFilter.value, status: statusFilter.value })
+    );
+  } catch (error) {
+    // Storage may be unavailable (private mode, file:// restrictions); filters
+    // still work for this page view, they just won't survive a reload.
+  }
+}
 
 function render() {
   const priority = priorityFilter.value;
@@ -39,6 +76,13 @@ function render() {
   `).join("");
 }
 
-priorityFilter.addEventListener("change", render);
-statusFilter.addEventListener("change", render);
+function onFilterChange() {
+  saveFilters();
+  render();
+}
+
+priorityFilter.addEventListener("change", onFilterChange);
+statusFilter.addEventListener("change", onFilterChange);
+
+restoreFilters();
 render();
