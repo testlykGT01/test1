@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Launch Checklist</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div>
+        <h1>Team Launch Checklist</h1>
+        <p class="subtitle">Track planning, content, approvals, and launch day in one place.</p>
+      </div>
+      <button id="resetButton" class="ghost-button" type="button">Reset checklist</button>
+    </header>
+
+    <section class="progress" aria-labelledby="overallLabel">
+      <div class="progress-row">
+        <span id="overallLabel" class="progress-label">Overall progress</span>
+        <span id="overallCount" class="progress-count"></span>
+      </div>
+      <div class="bar" role="progressbar" aria-labelledby="overallLabel" aria-valuemin="0" aria-valuemax="100" id="overallBar">
+        <div class="bar-fill" id="overallFill"></div>
+      </div>
+    </section>
+
+    <div class="filters">
+      <label class="checkbox">
+        <input type="checkbox" id="hideDone">
+        Hide completed tasks
+      </label>
+    </div>
+
+    <div id="sections" class="sections"></div>
+
+    <p class="footnote">Progress is saved in this browser using localStorage. No server required.</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
