@@ -11,13 +11,26 @@
     <h1>Feature Request Dashboard</h1>
     <p class="subtitle">Disposable Code Tab QA repo fixture</p>
 
-    <label for="priorityFilter">Priority</label>
-    <select id="priorityFilter">
-      <option value="all">All</option>
-      <option value="High">High</option>
-      <option value="Medium">Medium</option>
-      <option value="Low">Low</option>
-    </select>
+    <div class="filters">
+      <div>
+        <label for="priorityFilter">Priority</label>
+        <select id="priorityFilter">
+          <option value="all">All</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+      <div>
+        <label for="statusFilter">Status</label>
+        <select id="statusFilter">
+          <option value="all">All</option>
+          <option value="Backlog">Backlog</option>
+          <option value="Planned">Planned</option>
+          <option value="In Progress">In Progress</option>
+        </select>
+      </div>
+    </div>
 
     <section id="cards" class="cards" aria-live="polite"></section>
   </main>
