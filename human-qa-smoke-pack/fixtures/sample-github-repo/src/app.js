@@ -7,11 +7,21 @@ const requests = [
 ];
 
 const priorityFilter = document.querySelector("#priorityFilter");
+const statusFilter = document.querySelector("#statusFilter");
 const cards = document.querySelector("#cards");
 
 function render() {
   const priority = priorityFilter.value;
-  const visible = requests.filter((item) => priority === "all" || item.priority === priority);
+  const status = statusFilter.value;
+  const visible = requests.filter((item) =>
+    (priority === "all" || item.priority === priority) &&
+    (status === "all" || item.status === status)
+  );
+
+  if (visible.length === 0) {
+    cards.innerHTML = `<p class="empty">No feature requests match the selected filters.</p>`;
+    return;
+  }
 
   cards.innerHTML = visible.map((item) => `
     <article class="card">
@@ -25,4 +35,5 @@ function render() {
 }
 
 priorityFilter.addEventListener("change", render);
+statusFilter.addEventListener("change", render);
 render();

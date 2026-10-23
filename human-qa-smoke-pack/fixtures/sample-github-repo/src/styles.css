@@ -18,6 +18,12 @@ body {
   color: #64748b;
 }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
 label {
   display: block;
   margin-top: 20px;
@@ -48,4 +54,9 @@ select {
 .meta {
   color: #64748b;
   font-size: 0.9rem;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  color: #64748b;
 }
