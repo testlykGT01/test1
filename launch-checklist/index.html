@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Launch Checklist</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">A shared plan. A confident launch.</p>
+      <h1>Team launch checklist</h1>
+      <p>Work through the essentials, from the first plan to launch day.</p>
+    </header>
+    <section class="overview" aria-label="Launch progress">
+      <div class="progress-heading">
+        <h2>Launch readiness</h2>
+        <span id="progressText" role="status">0 of 16 complete</span>
+      </div>
+      <progress id="progress" max="16" value="0" aria-label="Completed launch tasks"></progress>
+      <p id="saveStatus" role="status">Progress saves in this browser only; it is not synced with teammates.</p>
+      <button id="reset" type="button">Reset checklist</button>
+    </section>
+    <div class="sections">
+      <section class="checklist" aria-labelledby="planningHeading">
+        <h2 id="planningHeading">01 · Planning</h2>
+        <p>Align the team on goals and responsibilities.</p>
+        <label><input type="checkbox" id="planning-goals"> Define launch goals and success metrics</label>
+        <label><input type="checkbox" id="planning-audience"> Identify the target audience</label>
+        <label><input type="checkbox" id="planning-owners"> Assign owners and confirm responsibilities</label>
+        <label><input type="checkbox" id="planning-date"> Set the launch date and timeline</label>
+      </section>
+      <section class="checklist" aria-labelledby="contentHeading">
+        <h2 id="contentHeading">02 · Content</h2>
+        <p>Prepare the story and the assets that support it.</p>
+        <label><input type="checkbox" id="content-messaging"> Finalize key messages and positioning</label>
+        <label><input type="checkbox" id="content-page"> Prepare the landing page and product copy</label>
+        <label><input type="checkbox" id="content-assets"> Create email, social, and visual assets</label>
+        <label><input type="checkbox" id="content-proof"> Proofread content and check all links</label>
+      </section>
+      <section class="checklist" aria-labelledby="approvalsHeading">
+        <h2 id="approvalsHeading">03 · Approvals</h2>
+        <p>Collect sign-off before anything goes live.</p>
+        <label><input type="checkbox" id="approvals-product"> Get product and engineering sign-off</label>
+        <label><input type="checkbox" id="approvals-brand"> Get marketing and brand approval</label>
+        <label><input type="checkbox" id="approvals-legal"> Complete legal and compliance review</label>
+        <label><input type="checkbox" id="approvals-go"> Confirm the final go/no-go decision</label>
+      </section>
+      <section class="checklist" aria-labelledby="launchHeading">
+        <h2 id="launchHeading">04 · Launch day</h2>
+        <p>Publish, verify, and stay close to your audience.</p>
+        <label><input type="checkbox" id="launch-publish"> Publish the landing page and announcement</label>
+        <label><input type="checkbox" id="launch-campaigns"> Send emails and activate social campaigns</label>
+        <label><input type="checkbox" id="launch-check"> Verify the live experience and analytics</label>
+        <label><input type="checkbox" id="launch-monitor"> Monitor feedback and share a team update</label>
+      </section>
+    </div>
+    <noscript><p>Enable JavaScript to track progress and save your checklist. The tasks are still readable without it.</p></noscript>
+    <footer>One task at a time. You’ve got this.</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
