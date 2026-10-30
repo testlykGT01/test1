@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard filter regression tests</title>
+</head>
+<body>
+  <h1>Dashboard filter regression tests</h1>
+  <p id="result" role="status">Running…</p>
+  <label for="priorityFilter">Priority</label>
+  <select id="priorityFilter">
+    <option value="all">All</option>
+    <option>High</option>
+    <option>Medium</option>
+    <option>Low</option>
+  </select>
+  <label for="statusFilter">Status</label>
+  <select id="statusFilter">
+    <option value="all">All</option>
+    <option>Backlog</option>
+    <option>Planned</option>
+    <option>In Progress</option>
+  </select>
+  <section id="cards" aria-live="polite"></section>
+  <script src="../src/app.js"></script>
+  <script src="filters.test.js"></script>
+</body>
+</html>
