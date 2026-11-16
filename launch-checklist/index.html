@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Launch Checklist</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">From idea to launch</p>
+      <h1>Team launch checklist</h1>
+      <p>A simple guide to getting your next launch out the door.</p>
+    </header>
+    <section class="summary" aria-label="Launch progress">
+      <div class="summary-heading">
+        <p id="progressText" role="status">0 of 16 tasks complete</p>
+        <button id="reset" type="button">Reset checklist</button>
+      </div>
+      <progress id="progress" max="16" value="0" aria-label="Completed launch tasks"></progress>
+      <p class="hint" id="saveNotice">Checkmarks are saved in this browser only, not shared with teammates.</p>
+    </section>
+    <div id="checklist" class="sections"></div>
+    <noscript>Please enable JavaScript to use the checklist.</noscript>
+    <footer>Keep everyone aligned. Review this checklist together before launch.</footer>
+  </main>
+</body>
+</html>
